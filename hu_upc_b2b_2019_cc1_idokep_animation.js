@@ -5,7 +5,7 @@ var firstRun = true
 function initBanner(){
 	var tmpItm, trgtItm
 
-	setAllriginals(b, {alpha:0}, true)
+	setAllriginals(b, {alpha:0})
 
 	TweenMax.delayedCall(.5, initSmallPrint, [{fullHeight: false}])
 	
@@ -26,51 +26,47 @@ function initBanner(){
 	// showBtn()
 
 	return;
-/*	
-	b.bg.alpha = 1
-	// b.swirl.alpha = 1
-	tmpItm = b.fork
-	tmpItm.alpha = 1
-	trgtItm = b.forkAnim.forkP1
-	TweenMax.to(tmpItm, 0, {x: trgtItm.x, y: trgtItm.y, scaleX: trgtItm.scaleX, scaleY: trgtItm.scaleY, rotation: trgtItm.rotation, ease: Cubic.easeIn})
-	
-	if(firstRun){
-		oikosLogo = createContainer(b.oikosLogo)
-		uj = createContainer(b.uj)
-		txt_kostold = createContainer(b.txt_kostold)
-		// kiprobalom = createContainer(b.kiprobalom)
-	}
-	
-*/
 }
 
 function slide1(){
-	showTxt(b.azInternetbenTxt)
-
-	badgeContainer.style.visibility = "visible";
-	TweenMax.from(badgeContainer, 1.2, {rotationY: 90, ease: Elastic.easeOut.config(1, 0.5), delay: .7})
-
+	showTxt(b.alapjaratonTxt)
+	// 
 	
-	TweenMax.delayedCall(2, showLogo)
+	TweenMax.delayedCall(.5, showLogo)
 
-	TweenMax.delayedCall(4, slideEnd)
+	TweenMax.delayedCall(2, slideEnd)
 	
 
 
 	function slideEnd(){
-		hideTxt(b.azInternetbenTxt)
+		hideTxt(b.alapjaratonTxt)
 		TweenMax.delayedCall(.8, slide2)
 	}
 }
 
 function slide2(){
-	showTxt(b.megbizhatoTxt)
+	showTxt(b.aUpcEbbenIsTxt)
 	
-	TweenMax.delayedCall(0, flipBadge)
-	TweenMax.delayedCall(4, flipBadge)
-
 
 	TweenMax.delayedCall(1, showBtn)
+
+	TweenMax.delayedCall(3, slideEnd)
+	
+	function slideEnd(){
+		hideTxt(b.aUpcEbbenIsTxt)
+		TweenMax.delayedCall(.8, slide3)
+	}
+}
+
+function slide3(){
+	showTxt(b.megbizhatoTxt)
+	// 
+
+	badgeContainer.style.visibility = "visible";
+	TweenMax.from(badgeContainer, 1.2, {rotationY: 90, ease: Elastic.easeOut.config(1, 0.5), delay: .7})
+
+	TweenMax.delayedCall(3, flipBadge)
+	TweenMax.delayedCall(6, flipBadge)
 }
 
 function showTxt(_txt){
@@ -157,7 +153,6 @@ function showBtn(){
 
 function buttonAnim(){
 	var tmpItm = b.erdekelBtn.btnArrow
-	console.log(t.elapsed())
 	if(t.elapsed() < 29000){
 		TweenMax.to(tmpItm, .4, {x: tmpItm.x+5, ease: Sine.easeOut, repeat: 1, yoyo: true, onComplete: buttonAnim})
 	}
