@@ -21,7 +21,7 @@ function initBanner(){
 
 	tmpItm = b.bgImg
 	trgtItm = b.bgImgStart
-	TweenMax.from(tmpItm, 14, {x: trgtItm.x, y: trgtItm.y, scaleX: trgtItm.scaleX, scaleY: trgtItm.scaleY, ease: Sine.easeOut})
+	TweenMax.to(tmpItm, 14, {x: trgtItm.x, y: trgtItm.y, scaleX: trgtItm.scaleX, scaleY: trgtItm.scaleY, ease: Sine.easeOut})
 
 	// showBtn()
 
@@ -29,7 +29,7 @@ function initBanner(){
 }
 
 function slide1(){
-	showTxt(b.alapjaratonTxt)
+	showTxt(b.nehaTxt)
 	// 
 	
 	TweenMax.delayedCall(.5, showLogo)
@@ -39,27 +39,23 @@ function slide1(){
 
 
 	function slideEnd(){
-		hideTxt(b.alapjaratonTxt)
+		hideTxt(b.nehaTxt)
 		TweenMax.delayedCall(.8, slide2)
 	}
 }
 
 function slide2(){
-	showTxt(b.aUpcEbbenIsTxt)
+	showTxt(b.megbizhatoTxt)
 	
 
 	TweenMax.delayedCall(1, showBtn)
 
-	TweenMax.delayedCall(3, slideEnd)
+	TweenMax.delayedCall(1, slide3)
 	
-	function slideEnd(){
-		hideTxt(b.aUpcEbbenIsTxt)
-		TweenMax.delayedCall(.8, slide3)
-	}
 }
 
 function slide3(){
-	showTxt(b.megbizhatoTxt)
+	
 	// 
 
 	badgeContainer.style.visibility = "visible";
